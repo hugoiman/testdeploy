@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/labstack/echo"
 )
@@ -22,5 +23,5 @@ func main() {
 		return ctx.JSON(http.StatusOK, data)
 	})
 
-	r.Start(":5000")
+	r.Start(":" + os.Getenv("PORT"))
 }
