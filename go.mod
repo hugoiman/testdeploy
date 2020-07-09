@@ -8,3 +8,5 @@ require (
 	github.com/stretchr/testify v1.6.1 // indirect
 	golang.org/x/crypto v0.0.0-20200707235045-ab33eee955e0 // indirect
 )
+
+// +heroku install ./cmd
