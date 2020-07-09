@@ -1,1 +1,1 @@
-web: bin/testdeploy/cmd
+web: bin/testdeploy
