@@ -1,9 +1,12 @@
 package main
 
 import (
+	"fmt"
+	"log"
 	"net/http"
 	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/labstack/echo"
 )
 
@@ -11,6 +14,13 @@ import (
 type M map[string]interface{}
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	api := os.Getenv("API_KEY")
+
 	r := echo.New()
 
 	r.GET("/", func(ctx echo.Context) error {
@@ -19,9 +29,12 @@ func main() {
 	})
 
 	r.GET("/json", func(ctx echo.Context) error {
-		data := M{"Message": "Hello", "Counter": 2}
+		data := M{"Message": "Hello", "Counter": 2, "API": api}
 		return ctx.JSON(http.StatusOK, data)
 	})
 
+	fmt.Println("API_KEY: ", api)
+
+	// os.Setenv("PORT", "8080")
 	r.Start(":" + os.Getenv("PORT"))
 }
