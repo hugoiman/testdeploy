@@ -2,11 +2,9 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/labstack/echo"
 )
 
@@ -14,11 +12,6 @@ import (
 type M map[string]interface{}
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	api := os.Getenv("API_KEY")
 
 	r := echo.New()
